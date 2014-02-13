@@ -278,13 +278,15 @@ ggally_cor <- function(data, mapping, corAlignPercent = 0.6, ...){
     ymax <- max(yVal)
     yrange <- c(ymin-.01*(ymax-ymin),ymax+.01*(ymax-ymin))
 
+    cor_obj <- cor.test(xVal, yVal)
+    cor_signif <- ""
+    if (cor_obj$p.value < 0.01) cor_signif <- "**"
+    else if (cor_obj$p.value < 0.05) cor_signif <- "*" 
+
     p <- ggally_text(
       label = paste(
-        "Corr:\n",
-        signif(
-          cor(xVal,yVal),
-          3
-        ),
+        signif(cor_obj$estimate, 3),
+        cor_signif,,
         sep="",collapse=""
       ),
       mapping,
