@@ -279,9 +279,9 @@ ggally_cor <- function(data, mapping, corAlignPercent = 0.6, ...){
     yrange <- c(ymin-.01*(ymax-ymin),ymax+.01*(ymax-ymin))
 
     cor_obj <- cor.test(xVal, yVal)
-    cor_signif <- ""
-    if (cor_obj$p.value < 0.01) cor_signif <- "**"
-    else if (cor_obj$p.value < 0.05) cor_signif <- "*" 
+    cor_signif <- symnum(cor_obj$p.value, corr = FALSE,
+               cutpoints = c(0, .001, .01, .05, .1, 1),
+               symbols = c("***", "**", "*", ".", " "))
 
     p <- ggally_text(
       label = paste(
