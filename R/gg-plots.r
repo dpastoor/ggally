@@ -286,7 +286,7 @@ ggally_cor <- function(data, mapping, corAlignPercent = 0.6, ...){
     p <- ggally_text(
       label = paste(
         signif(cor_obj$estimate, 3),
-        cor_signif,,
+        cor_signif,
         sep="",collapse=""
       ),
       mapping,
