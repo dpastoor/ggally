@@ -282,7 +282,8 @@ ggally_cor <- function(data, mapping, corAlignPercent = 0.6, ...){
     cor_signif <- symnum(cor_obj$p.value, corr = FALSE,
                cutpoints = c(0, .001, .01, .05, .1, 1),
                symbols = c("***", "**", "*", ".", " "))
-
+    cor_text_size <- 5 + 10*abs(cor_obj$estimate)
+    
     p <- ggally_text(
       label = paste(
         signif(cor_obj$estimate, 3),
@@ -294,6 +295,7 @@ ggally_cor <- function(data, mapping, corAlignPercent = 0.6, ...){
       yP=0.5,
       xrange = xrange,
       yrange = yrange,
+      size=cor_text_size,
       ...
     ) +
     #element_bw() +
