@@ -299,7 +299,10 @@ ggally_cor <- function(data, mapping, corAlignPercent = 0.6, ...){
       ...
     ) +
     #element_bw() +
-    theme(legend.position = "none")
+    theme(legend.position = "none", 
+          panel.grid.major = element_blank(), 
+          axis.ticks = element_blank(), 
+          panel.border = element_rect(linetype = "dashed", colour = "black", fill=NA))
 
     p$type <- "continuous"
     p$subType <- "cor"
